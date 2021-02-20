@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".Admin.InputEvakuasiActivity"
     android:orientation="vertical">
-    
+
     <TextView
-        android:text="Input Jalur Evakuasi"
+        android:text="Input Titik Rawan Bencana"
         android:gravity="center"
         android:fontFamily="@font/montserrat_bold"
         android:textColor="@color/blue"
@@ -53,34 +53,6 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:text="Daya Tampung"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:textSize="16sp"
-                    android:layout_marginStart="10dp"
-                    android:textColor="@color/lightblack1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <EditText
-                    android:id="@+id/inputTampung"
-                    android:hint="Masukkan daya tampung"
-                    android:singleLine="true"
-                    android:paddingStart="18dp"
-                    android:textSize="18sp"
-                    android:textColor="@color/lightblack1"
-                    android:fontFamily="@font/montserrat"
-                    android:inputType="number"
-                    android:background="@drawable/ic_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
@@ -90,43 +62,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:text="Jarak"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:textSize="16sp"
-                    android:layout_marginStart="10dp"
-                    android:textColor="@color/lightblack1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <EditText
-                    android:id="@+id/inputJarak"
-                    android:hint="Masukkan jarak"
-                    android:singleLine="true"
-                    android:paddingStart="18dp"
-                    android:textSize="18sp"
-                    android:textColor="@color/lightblack1"
-                    android:fontFamily="@font/montserrat"
-                    android:inputType="number"
-                    android:background="@drawable/ic_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:text="Nama Shelter"
+                    android:text="Kecamatan"
                     android:fontFamily="@font/montserrat_bold"
                     android:textSize="16sp"
                     android:textColor="@color/lightblack1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <EditText
-                    android:id="@+id/inputShelter"
+                    android:id="@+id/inputKecamatan"
                     android:hint="Masukkan nama shelter"
                     android:singleLine="true"
                     android:paddingStart="18dp"
@@ -208,7 +151,6 @@
                     android:layout_height="wrap_content"/>
                 <Spinner
                     android:id="@+id/spinnerKategori"
-
                     android:singleLine="true"
                     android:paddingStart="18dp"
                     android:textSize="18sp"
