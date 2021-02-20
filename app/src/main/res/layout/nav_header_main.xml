@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    >
+
+    <ImageView
+        android:id="@+id/img"
+        android:src="@drawable/logo"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="24sp"
+        android:layout_marginStart="20dp"
+        android:layout_width="50sp"
+        android:layout_height="50sp"/>
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_toRightOf="@id/img"
+        android:layout_centerVertical="true"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/Sample1"
+            android:text="Informasi "
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="@color/blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/Sample2"
+            android:text="Bencana"
+            android:layout_toEndOf="@id/Sample1"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="@color/green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/SampleLokasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Sample2"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Padang, Indonesia"
+            android:textColor="#000000"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+
+        android:layout_marginTop="100dp"
+        android:layout_below="@id/img"
+        />
+
+
+</RelativeLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context=".Admin.LoginAdminActivity">
+
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_weight="5.5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_above="@id/infor"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logo"
+             />
+
+        <TextView
+            android:id="@+id/infor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/bncna"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Informasi"
+            android:textColor="@color/blue"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/bncna"
+            android:layout_alignParentBottom="true"
+            android:text="Bencana App"
+            android:textColor="@color/green"
+            android:textSize="24sp"
+            android:layout_marginBottom="48dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/l2"
+        android:layout_weight="4.5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="50dp"
+        android:paddingStart="12dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/l_user"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Username"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/lightblack1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/inputUsername"
+                android:hint="Username"
+                android:singleLine="true"
+                android:paddingStart="18dp"
+                android:background="@drawable/ic_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l_pass"
+            android:layout_below="@id/l_user"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Password"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/lightblack1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/inputPassword"
+                android:hint="Password"
+                android:paddingStart="18dp"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:background="@drawable/ic_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        
+        <Button
+            android:id="@+id/btnLogin"
+            android:text="Masuk"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="@color/white"
+            android:layout_below="@id/l_pass"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/ic_button"
+            android:layout_marginHorizontal="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        
+    </RelativeLayout>
+
+
+</LinearLayout>

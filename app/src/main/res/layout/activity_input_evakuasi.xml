@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.InputEvakuasiActivity"
+    android:orientation="vertical">
+    
+    <TextView
+        android:text="Input Jalur Evakuasi"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/blue"
+        android:textSize="26sp"
+        android:layout_marginVertical="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Alamat"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="16sp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/lightblack1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/inputAlamat"
+                    android:hint="Masukkan alamat"
+                    android:singleLine="true"
+                    android:paddingStart="18dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/lightblack1"
+                    android:fontFamily="@font/montserrat"
+                    android:background="@drawable/ic_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Daya Tampung"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="16sp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/lightblack1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/inputTampung"
+                    android:hint="Masukkan daya tampung"
+                    android:singleLine="true"
+                    android:paddingStart="18dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/lightblack1"
+                    android:fontFamily="@font/montserrat"
+                    android:inputType="number"
+                    android:background="@drawable/ic_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Jarak"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="16sp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/lightblack1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/inputJarak"
+                    android:hint="Masukkan jarak"
+                    android:singleLine="true"
+                    android:paddingStart="18dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/lightblack1"
+                    android:fontFamily="@font/montserrat"
+                    android:inputType="number"
+                    android:background="@drawable/ic_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Nama Shelter"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/lightblack1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/inputShelter"
+                    android:hint="Masukkan nama shelter"
+                    android:singleLine="true"
+                    android:paddingStart="18dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/lightblack1"
+                    android:fontFamily="@font/montserrat"
+                    android:background="@drawable/ic_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Latitude"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/lightblack1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/inputLatitude"
+                    android:hint="Masukkan latitude"
+                    android:singleLine="true"
+                    android:paddingStart="18dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/lightblack1"
+                    android:fontFamily="@font/montserrat"
+                    android:background="@drawable/ic_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Longitude"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/lightblack1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/inputLongitude"
+                    android:hint="Masukkan longitude"
+                    android:singleLine="true"
+                    android:paddingStart="18dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/lightblack1"
+                    android:fontFamily="@font/montserrat"
+                    android:background="@drawable/ic_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Kategori"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/lightblack1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Spinner
+                    android:id="@+id/spinnerKategori"
+
+                    android:singleLine="true"
+                    android:paddingStart="18dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/lightblack1"
+                    android:fontFamily="@font/montserrat"
+                    android:background="@drawable/ic_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnTambah"
+                android:text="Tambah"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="36dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/ic_button"
+                android:layout_marginHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
