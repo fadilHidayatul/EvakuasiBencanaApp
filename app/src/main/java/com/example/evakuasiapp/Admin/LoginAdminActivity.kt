@@ -38,8 +38,45 @@ class LoginAdminActivity : AppCompatActivity() {
     }
 
     private fun loginAdmin() {
+        if (TextUtils.isEmpty(binding.inputUsername.text.toString())){
+            binding.inputUsername.error = "Masukkan Username"
+        }else if (TextUtils.isEmpty(binding.inputPassword.text.toString())){
+            binding.inputPassword.error = "Masukkan Password"
+        }else{
+            ApiClient.getClient.loginUser(
+                binding.inputUsername.text.toString(),
+                binding.inputPassword.text.toString()
+            )
+                .enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>
+                    ) {
+                        if (response.isSuccessful) {
+                            val jsonO = JSONObject(response.body()!!.string())
+
+                            if (jsonO.getString("status") == "200") {
+                                val jsonO2 = jsonO.getJSONObject("DATA")
+
+                                val gson = Gson()
+                                val admin: Admin.DATABean = gson.fromJson(
+                                    jsonO2.toString() ,
+                                    Admin.DATABean::class.java
+                                )
 
 
+
+
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        Toast.makeText(context, "Koneksi Internet", Toast.LENGTH_SHORT).show();
+                    }
+
+                })
+        }
     }
 }
 
