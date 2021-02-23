@@ -3,6 +3,7 @@ package com.example.evakuasiapp.Admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.evakuasiapp.MainActivity
 import com.example.evakuasiapp.databinding.ActivityPilihInputBinding
 
 class PilihInputActivity : AppCompatActivity() {
@@ -22,5 +23,12 @@ class PilihInputActivity : AppCompatActivity() {
             val intent : Intent = Intent(applicationContext,InputEvakuasiActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onBackPressed() {
+        var intent : Intent = Intent(applicationContext, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        finish()
     }
 }

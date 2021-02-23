@@ -1,37 +1,36 @@
 package com.example.evakuasiapp.Admin
 
-import android.R.attr.data
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.evakuasiapp.MainActivity
+import com.example.evakuasiapp.R
+import com.example.evakuasiapp.SharedPreferences.PrefManager
 import com.example.evakuasiapp.UtilsApi.ApiClient
 import com.example.evakuasiapp.databinding.ActivityLoginAdminBinding
 import com.google.gson.Gson
+import com.tapadoo.alerter.Alerter
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class LoginAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginAdminBinding
     private lateinit var context : Context
-
+    private lateinit var manager : PrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
         context = this
-
-
+        manager = PrefManager(this)
 
         binding.btnLogin.setOnClickListener{
-//            var intent : Intent = Intent(context, InputEvakuasiActivity::class.java)
-//            startActivity(intent)
             loginAdmin()
 
         }
@@ -60,24 +59,53 @@ class LoginAdminActivity : AppCompatActivity() {
 
                                 val gson = Gson()
                                 val admin: Admin.DATABean = gson.fromJson(
-                                    jsonO2.toString() ,
+                                    jsonO2.toString(),
                                     Admin.DATABean::class.java
                                 )
 
+                                manager.saveSession()
+                                manager.setUsername(manager.USERNAME, admin.username)
+                                manager.setToken(manager.TOKEN, admin.token)
 
-
-
+                                var intent: Intent = Intent(
+                                    context,
+                                    PilihInputActivity::class.java
+                                )
+                                startActivity(intent)
+                            } else {
+                                Alerter.create(this@LoginAdminActivity)
+                                    .setText(jsonO.getString("message"))
+                                    .setIcon(R.drawable.ic_warning).setBackgroundColorRes(R.color.red).show()
                             }
                         }
                     }
 
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        Toast.makeText(context, "Koneksi Internet", Toast.LENGTH_SHORT).show();
+                        Alerter.create(this@LoginAdminActivity)
+                            .setTitle("Warning")
+                            .setText("Koneksi Internet")
+                            .setIcon(R.drawable.ic_warning)
+                            .setBackgroundColorRes(R.color.red)
+                            .show()
                     }
 
                 })
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        var manager = PrefManager(this)
+        var userID : Boolean = manager.getSession()
+
+        if (userID){
+            var intent : Intent = Intent(applicationContext, PilihInputActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
+    }
+
+
 }
 
 
