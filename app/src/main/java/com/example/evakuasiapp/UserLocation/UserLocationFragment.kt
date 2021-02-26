@@ -4,6 +4,8 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,7 +21,10 @@ import com.example.easywaylocation.GetLocationDetail
 import com.example.easywaylocation.Listener
 import com.example.easywaylocation.LocationData
 import com.example.evakuasiapp.MainActivity
+import com.example.evakuasiapp.R
 import com.example.evakuasiapp.databinding.FragmentUserLocationBinding
+import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.*
 
 /**
  * A simple [Fragment] subclass.
@@ -27,13 +32,19 @@ import com.example.evakuasiapp.databinding.FragmentUserLocationBinding
 class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
     private lateinit var binding : FragmentUserLocationBinding
 
+    private var easyLocation : EasyWayLocation? = null
+    lateinit var getLocationDetail : GetLocationDetail
+    var REQ_CODE : Int = 1
+
     private var lat : Double = 0.0
     private var lgt : Double = 0.0
 
-    private var easyLocation : EasyWayLocation? = null
-    lateinit var getLocationDetail : GetLocationDetail
+    lateinit var gmaps : GoogleMap
+    lateinit var cameraPosition: CameraPosition
+    lateinit var center : LatLng
+    lateinit var latLong : LatLng
+    var markerOptions = MarkerOptions()
 
-    var REQ_CODE : Int = 1
 
     fun UserLocationFragment() {
         // Required empty public constructor
@@ -48,6 +59,9 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
         getLocationDetail = GetLocationDetail(this, requireContext())
         easyLocation = EasyWayLocation(requireContext(), false, this)
 
+        binding.mapView.onCreate(savedInstanceState)
+        binding.mapView.onResume()
+
         checkPermission(Manifest.permission.ACCESS_FINE_LOCATION,REQ_CODE)
         if (permissionIsGranted()) {
             getLocationUser()
@@ -58,14 +72,12 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
         return binding.root
     }
 
+    //check permission
     fun checkPermission(permission : String, requestCode: Int){
         if (ContextCompat.checkSelfPermission(requireContext(),permission) == PackageManager.PERMISSION_DENIED){
             ActivityCompat.requestPermissions(requireActivity() , arrayOf(permission) ,requestCode )
         }else{
-            Toast.makeText(requireContext(),
-                "Permission already granted",
-                Toast.LENGTH_SHORT)
-                .show()
+
         }
     }
 
@@ -84,15 +96,14 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
                     .show();
             }else{
                 Toast.makeText(requireContext(),
-                    "Camera Permission Denied",
+                    "Location Permission Denied",
                     Toast.LENGTH_SHORT)
-                    .show();
+                    .show()
             }
         }
     }
 
-    ////
-
+    ////grant permission & get location
     fun permissionIsGranted() : Boolean {
         var permissionState : Int = ActivityCompat.checkSelfPermission(
             requireContext(),
@@ -104,12 +115,12 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
 
     private fun getLocationUser() {
         easyLocation!!.startLocation()
+
     }
 
-    ////
-
+    ////implement Location Data
     override fun locationData(locationData: LocationData?) {
-        binding.location.text = locationData!!.full_address
+        binding.userLocation.text = locationData!!.full_address //ambil alamat
     }
 
     override fun locationOn() {
@@ -121,16 +132,46 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
         lat  = location!!.latitude
         lgt = location.longitude
 
-        binding.latlong.text = lat.toString() + "" + lgt.toString()
-        getLocationDetail.getAddress(location.latitude, location.longitude, "xxx")
+        center = LatLng(lat,lgt)  // ada latlong
+
+        binding.userCoordinate.text = "$lat , $lgt" //ambil lat long
+        getLocationDetail.getAddress(location.latitude, location.longitude, "com.google.android.geo.API_KEY")
+
+        binding.mapView.getMapAsync(object : OnMapReadyCallback{
+            override fun onMapReady(googleMaps: GoogleMap?) {
+                gmaps = googleMaps!!
+
+                center = LatLng(lat, lgt) //tidak dapat lat lgt
+                cameraPosition = CameraPosition.Builder().target(center).zoom(14F).build()
+                googleMaps.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+                latLong = LatLng(lat, lgt)
+
+                gmaps.isIndoorEnabled = true
+                var ui : UiSettings = gmaps.uiSettings
+                ui.isIndoorLevelPickerEnabled = true
+
+
+                var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.your_loc)
+                var b  = Bitmap.createScaledBitmap(bitmap, 350,150,false)
+
+                gmaps.clear()
+                markerOptions.position(latLong)
+                markerOptions.icon(BitmapDescriptorFactory.fromBitmap(b))
+
+                gmaps.addMarker(markerOptions)
+                gmaps.setOnInfoWindowClickListener {
+                    Toast.makeText(context,"Lokasi saat ini",Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        })
     }
 
     override fun locationCancelled() {
         Toast.makeText(requireContext(), "Location Cancelled", Toast.LENGTH_SHORT).show()
     }
 
-    ///
-
+    ///Add-On Location
     override fun onResume() {
         super.onResume()
         easyLocation!!.startLocation()
@@ -147,6 +188,5 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
             easyLocation!!.onActivityResult(resultCode)
         }
     }
-
 
 }

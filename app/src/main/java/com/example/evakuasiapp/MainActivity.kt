@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -33,18 +34,14 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         setContentView(binding.root)
         context = this
 
-        var toolbar : Toolbar = findViewById(R.id.toolbar)
-
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeButtonEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
+        var menu : ImageView = findViewById(R.id.side_menu)
+        menu.setOnClickListener(){
+            binding.drawer.openDrawer(GravityCompat.START)
+        }
 
         toggle = ActionBarDrawerToggle(
             this,
             binding.drawer,
-            toolbar,
             R.string.drawer_open,
             R.string.drawer_close
         )

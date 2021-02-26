@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UserLocation.UserLocationFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -10,38 +11,94 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-        <LinearLayout
+        <RelativeLayout
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <TextView
-                android:text="Lokasi Sekarang"
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                />
+                android:layout_height="match_parent"/>
 
-            <TextView
-                android:id="@+id/location"
+            <LinearLayout
+                android:background="@drawable/bg_bottom_input"
+                android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                 />
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="180sp">
+                <RelativeLayout
+                    android:layout_marginHorizontal="26dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/srcCoor"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/coordinate"
+                        android:layout_marginEnd="12dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+                    <TextView
+                        android:id="@+id/txtCoor"
+                        android:text="Koordinat"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/lightblack5"
+                        android:textSize="10sp"
+                        android:layout_toEndOf="@id/srcCoor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/userCoordinate"
+                        android:text="0.0S 0.0E"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/lightblack5"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_toEndOf="@id/srcCoor"
+                        android:layout_below="@id/txtCoor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
 
-            <TextView
-                android:id="@+id/latlong"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textAlignment="center"
-                 />
-        </LinearLayout>
+                <RelativeLayout
+                    android:layout_marginHorizontal="26dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/srcLoc"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/location"
+                        android:layout_marginEnd="12dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+                    <TextView
+                        android:id="@+id/txtLoc"
+                        android:text="Lokasi"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/lightblack5"
+                        android:textSize="10sp"
+                        android:layout_toEndOf="@id/srcLoc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/userLocation"
+                        android:text="-"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/lightblack5"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_toEndOf="@id/srcLoc"
+                        android:layout_below="@id/txtLoc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
     </FrameLayout>
 
 </RelativeLayout>
