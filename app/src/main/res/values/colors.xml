@@ -9,6 +9,7 @@
     <color name="transwhite">#F2FFFFFF</color>
     <color name="lightblack5">#5C5C5C</color>
     <color name="lightblack1">#1F1F1F</color>
+    <color name="lightblack8">#808080</color>
     <color name="red">#ED3B3B</color>
 
 </resources>

@@ -19,6 +19,12 @@
                 <item android:id="@+id/evakuasi_tsunami"
                     android:title="Tsunami"
                     android:icon="@drawable/ic_tsunami"/>
+                <item android:id="@+id/evakuasi_banjir"
+                    android:title="Banjir" />
+                <item android:id="@+id/evakuasi_longsor"
+                    android:title="Longsor"/>
+                <item android:id="@+id/evakuasi_banjirB"
+                android:title="Banjir Bandang"/>
             </menu>
         </item>
     </group>

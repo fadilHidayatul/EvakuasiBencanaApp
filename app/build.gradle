@@ -50,18 +50,21 @@ dependencies {
 
     //location
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.github.prabhat1707:EasyWayLocation:2.0'
     implementation 'com.google.android.libraries.places:places:2.4.0'
 
     //retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     implementation 'com.google.code.gson:gson:2.8.5'
 
     //alerter
     implementation 'com.tapadoo.android:alerter:3.0.2'
+
+    //searchview
+    implementation 'com.github.wrdlbrnft:sorted-list-adapter:0.3.0.27'
 
 
 }

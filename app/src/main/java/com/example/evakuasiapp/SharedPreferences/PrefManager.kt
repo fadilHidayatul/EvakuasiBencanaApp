@@ -15,6 +15,8 @@ class PrefManager(context: Context) {
     val SESSION_KEY : String = "KEY"
     val USERNAME : String = "USERNAME"
     val TOKEN : String = "TOKEN"
+    val LAT : String = "LAT"
+    val LONG : String = "LONG"
 
     //initialize Shared Preferences
     init {
@@ -55,6 +57,28 @@ class PrefManager(context: Context) {
         return SP!!.getString(TOKEN, "")
     }
 
+    fun setLat(key: String?, value: String?){
+        editor!!.putString(key, value)
+        editor!!.commit()
+    }
+    fun getLat() : String? {
+        return SP!!.getString(LAT, "")
+    }
+
+    fun setLong(key: String?, value:String?){
+        editor!!.putString(key, value)
+        editor!!.commit()
+    }
+    fun getLong() : String? {
+        return SP!!.getString(LONG, "")
+    }
+
 
 
 }
+
+private fun SharedPreferences.Editor.putFloat(key: String?, value: Double?) {
+
+}
+
+

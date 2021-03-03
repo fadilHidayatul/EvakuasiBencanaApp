@@ -15,6 +15,7 @@
             android:layout_height="?attr/actionBarSize"
             android:translationZ="2dp">
             <TextView
+                android:id="@+id/barInformasi"
                 android:text="Informasi Bencana"
                 android:gravity="center"
                 android:fontFamily="@font/montserrat_bold"

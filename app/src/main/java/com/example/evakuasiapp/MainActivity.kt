@@ -17,7 +17,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.evakuasiapp.Admin.LoginAdminActivity
+import com.example.evakuasiapp.Banjir.BanjirFragment
+import com.example.evakuasiapp.BanjirBandang.BanjirBandangFragment
 import com.example.evakuasiapp.Gempa.GempaFragment
+import com.example.evakuasiapp.Longsor.LongsorFragment
 import com.example.evakuasiapp.Tsunami.TsunamiFragment
 import com.example.evakuasiapp.UserLocation.UserLocationFragment
 import com.example.evakuasiapp.databinding.ActivityMainBinding
@@ -63,6 +66,9 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             R.id.item_location_user -> changeFragment(UserLocationFragment(),UserLocationFragment::class.java.simpleName)
             R.id.evakuasi_gempa -> changeFragment(GempaFragment(),GempaFragment::class.java.simpleName)
             R.id.evakuasi_tsunami ->changeFragment(TsunamiFragment(),TsunamiFragment::class.java.simpleName)
+            R.id.evakuasi_banjir ->changeFragment(BanjirFragment(), BanjirFragment::class.java.simpleName)
+            R.id.evakuasi_banjirB->changeFragment(BanjirBandangFragment(),BanjirBandangFragment::class.java.simpleName)
+            R.id.evakuasi_longsor->changeFragment(LongsorFragment(),LongsorFragment::class.java.simpleName)
         }
         binding.drawer.closeDrawer(GravityCompat.START)
         return true

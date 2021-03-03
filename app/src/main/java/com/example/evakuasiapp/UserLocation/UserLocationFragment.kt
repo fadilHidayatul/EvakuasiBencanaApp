@@ -6,11 +6,14 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -20,8 +23,11 @@ import com.example.easywaylocation.EasyWayLocation.LOCATION_SETTING_REQUEST_CODE
 import com.example.easywaylocation.GetLocationDetail
 import com.example.easywaylocation.Listener
 import com.example.easywaylocation.LocationData
+import com.example.easywaylocation.draw_path.DirectionUtil
+import com.example.easywaylocation.draw_path.PolyLineDataBean
 import com.example.evakuasiapp.MainActivity
 import com.example.evakuasiapp.R
+import com.example.evakuasiapp.SharedPreferences.PrefManager
 import com.example.evakuasiapp.databinding.FragmentUserLocationBinding
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
@@ -31,6 +37,7 @@ import com.google.android.gms.maps.model.*
  */
 class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
     private lateinit var binding : FragmentUserLocationBinding
+    private lateinit var manager : PrefManager
 
     private var easyLocation : EasyWayLocation? = null
     lateinit var getLocationDetail : GetLocationDetail
@@ -45,6 +52,8 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
     lateinit var latLong : LatLng
     var markerOptions = MarkerOptions()
 
+    private var wayPoints:ArrayList<LatLng> = ArrayList()
+
 
     fun UserLocationFragment() {
         // Required empty public constructor
@@ -55,6 +64,10 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentUserLocationBinding.inflate(inflater, container, false)
+        manager = PrefManager(context!!)
+
+        var infobar : TextView = activity!!.findViewById(R.id.barInformasi)
+        infobar.text = "Informasi Bencana"
 
         getLocationDetail = GetLocationDetail(this, requireContext())
         easyLocation = EasyWayLocation(requireContext(), false, this)
@@ -132,17 +145,20 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
         lat  = location!!.latitude
         lgt = location.longitude
 
+        manager.setLat(manager.LAT, lat.toString())
+        manager.setLong(manager.LONG, lgt.toString())
+
         center = LatLng(lat,lgt)  // ada latlong
 
         binding.userCoordinate.text = "$lat , $lgt" //ambil lat long
         getLocationDetail.getAddress(location.latitude, location.longitude, "com.google.android.geo.API_KEY")
 
-        binding.mapView.getMapAsync(object : OnMapReadyCallback{
+        binding.mapView.getMapAsync(object : OnMapReadyCallback {
             override fun onMapReady(googleMaps: GoogleMap?) {
                 gmaps = googleMaps!!
 
                 center = LatLng(lat, lgt) //tidak dapat lat lgt
-                cameraPosition = CameraPosition.Builder().target(center).zoom(14F).build()
+                cameraPosition = CameraPosition.Builder().target(center).zoom(16F).build()
                 googleMaps.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
                 latLong = LatLng(lat, lgt)
 
@@ -157,12 +173,18 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
                 gmaps.clear()
                 markerOptions.position(latLong)
                 markerOptions.icon(BitmapDescriptorFactory.fromBitmap(b))
+                markerOptions.title("Lokasi Sekarang")
+                markerOptions.snippet("Live Location")
 
                 gmaps.addMarker(markerOptions)
                 gmaps.setOnInfoWindowClickListener {
                     Toast.makeText(context,"Lokasi saat ini",Toast.LENGTH_SHORT).show()
                 }
+
+                //route
+
             }
+
 
         })
     }
@@ -175,11 +197,33 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
     override fun onResume() {
         super.onResume()
         easyLocation!!.startLocation()
+        binding.mapView.onResume()
     }
 
     override fun onPause() {
+        binding.mapView.onPause()
         super.onPause()
         easyLocation!!.endUpdates()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.mapView.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.mapView.onStop()
+    }
+
+    override fun onDestroy() {
+        binding.mapView.onDestroy()
+        super.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        binding.mapView.onLowMemory()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -188,5 +232,8 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
             easyLocation!!.onActivityResult(resultCode)
         }
     }
+
+
+
 
 }

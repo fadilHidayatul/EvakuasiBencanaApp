@@ -23,7 +23,7 @@ class InputRawanActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputRawanBinding
     private lateinit var context: Context
     var kategori = arrayOf("Pilih Kategori", "Longsor", "Banjir", "Banjir Bandang")
-    var no = arrayOf("0", "1", "2", "3")
+    var no = arrayOf("0", "4", "2", "1")
     lateinit var pilKategori: String
 
     override fun onCreate(savedInstanceState: Bundle?) {

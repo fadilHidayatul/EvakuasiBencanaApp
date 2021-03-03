@@ -8,7 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object ApiClient {
-    var BASE_URL : String = "http://192.168.100.35/bencana/"
+      var BASE_URL : String = "http://192.168.100.35/bencana/" //localhost
+//    var BASE_URL : String = "http://10.234.145.162/bencana/" //wifi id
 
     val getClient : ApiInterface
         get() {

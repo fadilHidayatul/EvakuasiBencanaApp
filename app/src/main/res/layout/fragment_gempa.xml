@@ -3,22 +3,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Gempa.GempaFragment">
+    tools:context=".Tsunami.TsunamiFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-        <LinearLayout
-            android:gravity="center"
+        <RelativeLayout
+            android:gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/loc"
-                android:text="Info Gempa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <LinearLayout
+                android:background="@drawable/bg_bottom_input"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="120sp">
+                <TextView
+                    android:text="Tampilkan Jalur Evakuasi"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/lightblack5"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="26dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/btnEvakuasiGempa"
+                    android:text="Tampilkan"
+                    android:background="@drawable/ic_button"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:layout_marginHorizontal="26dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
     </FrameLayout>
 
 </RelativeLayout>

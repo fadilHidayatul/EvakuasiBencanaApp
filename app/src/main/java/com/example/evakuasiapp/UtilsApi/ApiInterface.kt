@@ -38,5 +38,16 @@ interface ApiInterface {
         @Field("kategori") kategori: String?
     ) : Call<ResponseBody>
 
+    @FormUrlEncoded
+    @POST("titik/get_titik_bencana.php")
+    fun getTitikBencana(
+        @Field("kategori") kategori: String?
+    ) : Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("evakuasi/get_tempat_evakuasi.php")
+    fun  getEvakuasiBencana(
+        @Field("kategori") kategori: String?
+    ) : Call<ResponseBody>
 
 }

@@ -37,15 +37,15 @@
                     android:layout_marginBottom="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-            <Button
-                android:text="Tampilkan"
-                android:background="@drawable/ic_button"
-                android:fontFamily="@font/montserrat_bold"
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:layout_marginHorizontal="26dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <Button
+                    android:text="Tampilkan"
+                    android:background="@drawable/ic_button"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:layout_marginHorizontal="26dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
