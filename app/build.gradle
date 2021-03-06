@@ -53,6 +53,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.github.prabhat1707:EasyWayLocation:2.0'
     implementation 'com.google.android.libraries.places:places:2.4.0'
+    implementation 'com.google.maps.android:android-maps-utils:0.4+' //distance
 
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
@@ -65,6 +66,12 @@ dependencies {
 
     //searchview
     implementation 'com.github.wrdlbrnft:sorted-list-adapter:0.3.0.27'
+
+    //alertdialog
+    implementation 'com.github.d-max:spots-dialog:1.1@aar'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
 
 
 }

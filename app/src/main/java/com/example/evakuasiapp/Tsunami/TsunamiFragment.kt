@@ -1,5 +1,6 @@
 package com.example.evakuasiapp.Tsunami
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.evakuasiapp.JalurEvakuasi.JalurEvakuasiActivity
 import com.example.evakuasiapp.R
 import com.example.evakuasiapp.UtilsApi.ApiClient
 import com.example.evakuasiapp.databinding.FragmentTsunamiBinding
@@ -58,6 +60,12 @@ class TsunamiFragment : Fragment() {
         binding.mapView.onResume()
 
         AsyncMapView()
+
+        binding.btnJalurEvakuasiTsunami.setOnClickListener(){
+            var intent = Intent(context,JalurEvakuasiActivity::class.java)
+            intent.putExtra("kategori","5")
+            startActivity(intent)
+        }
 
 
         return binding.root

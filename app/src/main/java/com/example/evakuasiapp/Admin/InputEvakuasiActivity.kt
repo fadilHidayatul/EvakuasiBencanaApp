@@ -17,6 +17,7 @@ import com.tapadoo.alerter.Alerter
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 
@@ -75,14 +76,14 @@ class InputEvakuasiActivity : AppCompatActivity() {
 
     private fun inputEvakuasi() {
         ApiClient.getClient.inputEvakuasi(
-            binding.inputShelter.text.toString(),
+            binding.inputTempat.text.toString(),
             binding.inputAlamat.text.toString(),
             binding.inputKecamatan.text.toString(),
             binding.inputLatitude.text.toString(),
             binding.inputLongitude.text.toString(),
             binding.inputTampung.text.toString(),
             pilihan
-        ).enqueue(object : retrofit2.Callback<ResponseBody> {
+        ).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
                     val jsonO = JSONObject(response.body()!!.string());

@@ -18,7 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JalurEvakuasi.JalurEvakuasiActivity"></activity>
+        <activity android:name=".Offline.OfflineActivity"></activity>
+        <activity android:name=".Offline.OfflineEvakuasiActivity" />
+        <activity android:name=".JalurEvakuasi.MapEvakuasiActivity" />
+        <activity android:name=".JalurEvakuasi.JalurEvakuasiActivity" />
         <activity android:name=".Admin.PilihInputActivity" />
         <activity android:name=".Admin.InputRawanActivity" />
         <activity android:name=".Admin.DoneInputActivity" />

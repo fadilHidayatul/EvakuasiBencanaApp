@@ -2,9 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     android:foreground="?attr/selectableItemBackgroundBorderless">
 
-
-
-
     <item android:id="@+id/item_location_user"
         android:title="Lokasi Kamu"
         android:icon="@drawable/ic_my_location"
@@ -20,13 +17,37 @@
                     android:title="Tsunami"
                     android:icon="@drawable/ic_tsunami"/>
                 <item android:id="@+id/evakuasi_banjir"
-                    android:title="Banjir" />
+                    android:title="Banjir"
+                    android:icon="@drawable/ic_banjir"/>
                 <item android:id="@+id/evakuasi_longsor"
-                    android:title="Longsor"/>
+                    android:title="Longsor"
+                    android:icon="@drawable/ic_longsor"/>
                 <item android:id="@+id/evakuasi_banjirB"
-                android:title="Banjir Bandang"/>
+                android:title="Banjir Bandang"
+                    android:icon="@drawable/ic_banjir_bandang"/>
             </menu>
         </item>
     </group>
+
+    <group android:id="@+id/group_offline">
+        <item android:id="@+id/offline"
+            android:title="Offline"
+            android:icon="@drawable/ic_offline"/>
+    </group>
+
+    <group android:id="@+id/group_admin">
+        <item android:title="Menu Admin">
+            <menu>
+                <item android:id="@+id/admin"
+                    android:title="Admin"
+                    android:iconTint="@color/lightblack1"
+                    android:icon="@drawable/admin"/>
+
+            </menu>
+        </item>
+    </group>
+
+
+
 
 </menu>

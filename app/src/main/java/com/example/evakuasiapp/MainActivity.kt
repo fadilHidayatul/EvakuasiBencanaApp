@@ -7,11 +7,8 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.MenuItem
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -21,6 +18,7 @@ import com.example.evakuasiapp.Banjir.BanjirFragment
 import com.example.evakuasiapp.BanjirBandang.BanjirBandangFragment
 import com.example.evakuasiapp.Gempa.GempaFragment
 import com.example.evakuasiapp.Longsor.LongsorFragment
+import com.example.evakuasiapp.Offline.OfflineActivity
 import com.example.evakuasiapp.Tsunami.TsunamiFragment
 import com.example.evakuasiapp.UserLocation.UserLocationFragment
 import com.example.evakuasiapp.databinding.ActivityMainBinding
@@ -50,31 +48,51 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         )
         binding.drawer.addDrawerListener(toggle)
 
-        changeFragment(UserLocationFragment(),UserLocationFragment::class.java.simpleName)
+        changeFragment(UserLocationFragment(), UserLocationFragment::class.java.simpleName)
         binding.navigationView.setNavigationItemSelectedListener(this)
 
-        binding.login.setOnClickListener {
-            var intent : Intent = Intent(context,LoginAdminActivity::class.java)
-            startActivity(intent)
-            binding.drawer.closeDrawer(GravityCompat.START)
-        }
+//        binding.login.setOnClickListener {
+//            var intent : Intent = Intent(context, LoginAdminActivity::class.java)
+//            startActivity(intent)
+//            binding.drawer.closeDrawer(GravityCompat.START)
+//        }
 
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.item_location_user -> changeFragment(UserLocationFragment(),UserLocationFragment::class.java.simpleName)
-            R.id.evakuasi_gempa -> changeFragment(GempaFragment(),GempaFragment::class.java.simpleName)
-            R.id.evakuasi_tsunami ->changeFragment(TsunamiFragment(),TsunamiFragment::class.java.simpleName)
-            R.id.evakuasi_banjir ->changeFragment(BanjirFragment(), BanjirFragment::class.java.simpleName)
-            R.id.evakuasi_banjirB->changeFragment(BanjirBandangFragment(),BanjirBandangFragment::class.java.simpleName)
-            R.id.evakuasi_longsor->changeFragment(LongsorFragment(),LongsorFragment::class.java.simpleName)
+            R.id.item_location_user -> changeFragment(
+                UserLocationFragment(),
+                UserLocationFragment::class.java.simpleName
+            )
+            R.id.evakuasi_gempa -> changeFragment(
+                GempaFragment(),
+                GempaFragment::class.java.simpleName
+            )
+            R.id.evakuasi_tsunami -> changeFragment(
+                TsunamiFragment(),
+                TsunamiFragment::class.java.simpleName
+            )
+            R.id.evakuasi_banjir -> changeFragment(
+                BanjirFragment(),
+                BanjirFragment::class.java.simpleName
+            )
+            R.id.evakuasi_banjirB -> changeFragment(
+                BanjirBandangFragment(),
+                BanjirBandangFragment::class.java.simpleName
+            )
+            R.id.evakuasi_longsor -> changeFragment(
+                LongsorFragment(),
+                LongsorFragment::class.java.simpleName
+            )
+            R.id.offline -> startActivity(Intent(this@MainActivity, OfflineActivity::class.java))
+            R.id.admin -> startActivity(Intent(this@MainActivity, LoginAdminActivity::class.java))
         }
         binding.drawer.closeDrawer(GravityCompat.START)
         return true
     }
 
-    fun changeFragment(fragment: Fragment? , tag : String){
+    fun changeFragment(fragment: Fragment?, tag: String){
         var fragmentManager : FragmentManager = supportFragmentManager
         var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
 
@@ -86,7 +104,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         var temp : Fragment? = fragmentManager.findFragmentByTag(tag)
         if (temp == null){
             temp = fragment
-            fragmentTransaction.add(R.id.container, temp!!,tag)
+            fragmentTransaction.add(R.id.container, temp!!, tag)
         }else{
             fragmentTransaction.show(temp)
         }

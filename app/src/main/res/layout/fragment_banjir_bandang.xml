@@ -38,6 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <Button
+                    android:id="@+id/btnJalurEvakuasiBanjirB"
                     android:text="Tampilkan"
                     android:background="@drawable/ic_button"
                     android:fontFamily="@font/montserrat_bold"

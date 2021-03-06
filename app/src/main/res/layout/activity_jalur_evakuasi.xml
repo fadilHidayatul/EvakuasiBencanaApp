@@ -13,6 +13,7 @@
         android:orientation="vertical">
 
         <ImageView
+            android:onClick="backToPrevious"
             android:src="@drawable/ic_back"
             android:layout_marginStart="12dp"
             android:layout_centerVertical="true"

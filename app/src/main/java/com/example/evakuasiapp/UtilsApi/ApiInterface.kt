@@ -19,7 +19,7 @@ interface ApiInterface {
     @FormUrlEncoded
     @POST("evakuasi/input_tempat_evakuasi.php")
     fun inputEvakuasi(
-        @Field("shelter") shelter: String?,
+        @Field("tempat") tempat: String?,
         @Field("alamat") alamat: String?,
         @Field("kecamatan") kecamatan: String?,
         @Field("lat") lat: String?,

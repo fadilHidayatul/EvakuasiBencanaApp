@@ -1,5 +1,6 @@
 package com.example.evakuasiapp.BanjirBandang
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -7,7 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import com.example.evakuasiapp.JalurEvakuasi.JalurEvakuasiActivity
 import com.example.evakuasiapp.R
 
 import com.example.evakuasiapp.UtilsApi.ApiClient
@@ -19,6 +22,7 @@ import com.google.android.gms.maps.model.*
 import okhttp3.ResponseBody
 import org.json.JSONArray
 import org.json.JSONObject
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -48,9 +52,18 @@ class BanjirBandangFragment : Fragment() {
     ): View? {
         binding = FragmentBanjirBandangBinding.inflate(inflater,container,false)
 
+        var barInfo : TextView = activity!!.findViewById(R.id.barInformasi)
+        barInfo.text = "Titik Rawan Banjir Bandang"
+
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.onResume()
         mapViewAsync()
+
+        binding.btnJalurEvakuasiBanjirB.setOnClickListener(){
+            var intent = Intent(context, JalurEvakuasiActivity::class.java)
+            intent.putExtra("kategori","1")
+            startActivity(intent)
+        }
 
         return binding.root
     }
@@ -107,7 +120,7 @@ class BanjirBandangFragment : Fragment() {
 
     private fun setPointToMap(alamat: String, kecamatan: String, center: LatLng) {
 
-        var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.tsunami)
+        var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.banjir_bandang)
         var b = Bitmap.createScaledBitmap(bitmap,150,150,false)
 
         markerOptions.title(alamat)

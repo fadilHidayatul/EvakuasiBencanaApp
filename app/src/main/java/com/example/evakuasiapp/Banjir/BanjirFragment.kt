@@ -1,5 +1,6 @@
 package com.example.evakuasiapp.Banjir
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.example.evakuasiapp.JalurEvakuasi.JalurEvakuasiActivity
 
 import com.example.evakuasiapp.R
 import com.example.evakuasiapp.UtilsApi.ApiClient
@@ -52,12 +54,17 @@ class BanjirFragment : Fragment() {
     ): View? {
         binding = FragmentBanjirBinding.inflate(inflater,container,false)
         var infobar : TextView = activity!!.findViewById(R.id.barInformasi)
-        infobar.text = "Titik Rawan"
+        infobar.text = "Titik Rawan Banjir"
 
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.onResume()
+        AsyncMaps()
 
-        AsyncMaps();
+        binding.btnJalurEvakuasiBanjir.setOnClickListener(){
+            var intent = Intent(context,JalurEvakuasiActivity::class.java)
+            intent.putExtra("kategori","2")
+            startActivity(intent)
+        }
 
         return binding.root
     }
@@ -113,7 +120,7 @@ class BanjirFragment : Fragment() {
     }
 
     private fun setPoint(alamat: String, kecamatan: String, center: LatLng) {
-        var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.tsunami) //ganti icon
+        var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.banjir)
         var b : Bitmap = Bitmap.createScaledBitmap(bitmap,150,150,false)
 
         markerOptions.position(center)

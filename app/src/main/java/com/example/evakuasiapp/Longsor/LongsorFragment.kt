@@ -1,5 +1,6 @@
 package com.example.evakuasiapp.Longsor
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.example.evakuasiapp.JalurEvakuasi.JalurEvakuasiActivity
 
 import com.example.evakuasiapp.R
 import com.example.evakuasiapp.UtilsApi.ApiClient
@@ -51,11 +53,17 @@ class LongsorFragment : Fragment() {
     ): View? {
         binding = FragmentLongsorBinding.inflate(inflater,container,false)
         var barInfo : TextView = activity!!.findViewById(R.id.barInformasi)
-        barInfo.text = "Informasi Longsor"
+        barInfo.text = "Titik Rawan Longsor"
 
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.onResume()
         AsyncMapView()
+
+        binding.btnJalurEvakuasiLongsor.setOnClickListener(){
+            var intent = Intent(context, JalurEvakuasiActivity::class.java)
+            intent.putExtra("kategori","4")
+            startActivity(intent)
+        }
 
         return binding.root
     }
@@ -108,7 +116,7 @@ class LongsorFragment : Fragment() {
     }
 
     private fun setPointToMap(alamat: String, kecamatan: String, center: LatLng) {
-        var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.tsunami)
+        var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.longsor)
         var b = Bitmap.createScaledBitmap(bitmap,200,200,false)
 
         markerOptions.title(alamat)
