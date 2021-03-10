@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.tapadoo.alerter.Alerter
 import kotlinx.android.synthetic.main.fragment_tsunami.view.*
 import okhttp3.ResponseBody
 import org.json.JSONArray
@@ -115,7 +116,8 @@ class TsunamiFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(context, t.localizedMessage, Toast.LENGTH_SHORT).show()
+                Alerter.create(activity).setTitle("Warning").setText("Tidak ada koneksi internet")
+                    .setIcon(R.drawable.ic_warning).setBackgroundColorRes(R.color.red).show()
             }
 
         })

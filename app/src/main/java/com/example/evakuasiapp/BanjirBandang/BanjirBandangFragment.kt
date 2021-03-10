@@ -1,5 +1,6 @@
 package com.example.evakuasiapp.BanjirBandang
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -19,6 +20,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
+import com.tapadoo.alerter.Alerter
 import okhttp3.ResponseBody
 import org.json.JSONArray
 import org.json.JSONObject
@@ -112,7 +114,8 @@ class BanjirBandangFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(context,"Koneksi Internet",Toast.LENGTH_SHORT).show()
+                Alerter.create(activity).setTitle("Warning").setText("Tidak ada koneksi internet")
+                    .setIcon(R.drawable.ic_warning).setBackgroundColorRes(R.color.red).show()
             }
 
         })
@@ -130,6 +133,17 @@ class BanjirBandangFragment : Fragment() {
 
         gmaps.addMarker(markerOptions)
     }
+
+    override fun onPause() {
+        super.onPause()
+        mapViewAsync()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapViewAsync()
+    }
+
 
 
 }

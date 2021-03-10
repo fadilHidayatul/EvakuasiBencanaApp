@@ -19,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
+import com.tapadoo.alerter.Alerter
 import okhttp3.ResponseBody
 import org.json.JSONArray
 import org.json.JSONObject
@@ -113,7 +114,8 @@ class BanjirFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(context,"Cek Koneksi Internet",Toast.LENGTH_SHORT).show()
+                Alerter.create(activity).setTitle("Warning").setText("Tidak ada koneksi internet")
+                    .setIcon(R.drawable.ic_warning).setBackgroundColorRes(R.color.red).show()
             }
 
         })
