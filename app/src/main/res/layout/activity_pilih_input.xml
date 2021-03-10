@@ -10,7 +10,7 @@
     tools:context=".Admin.PilihInputActivity">
 
     <LinearLayout
-        android:layout_weight="3"
+        android:layout_weight="4"
         android:weightSum="4"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -46,35 +46,70 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_weight="7"
+        android:layout_weight="6"
+        android:weightSum="6"
         android:background="@drawable/bg_bottom_input"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnTitikRawan"
-            android:text="Titik Rawan"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:background="@drawable/ic_button_admin"
-            android:fontFamily="@font/montserrat_bold"
-            android:layout_marginHorizontal="28dp"
-            android:layout_marginBottom="20dp"
+        <RelativeLayout
+            android:layout_weight="2"
+            android:gravity="bottom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/btnTitikRawan"
+                android:text="Titik Rawan"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/ic_button_admin"
+                android:fontFamily="@font/montserrat_bold"
+                android:layout_marginHorizontal="28dp"
 
-        <Button
-            android:id="@+id/btnJalurEvakuasi"
-            android:text="Jalur Evakuasi"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:background="@drawable/ic_button_admin"
-            android:fontFamily="@font/montserrat_bold"
-            android:layout_marginHorizontal="28dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_weight="2">
+            <Button
+                android:id="@+id/btnJalurEvakuasi"
+                android:text="Jalur Evakuasi"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/ic_button_admin"
+                android:fontFamily="@font/montserrat_bold"
+                android:layout_marginHorizontal="28dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:layout_weight="2">
+            <Button
+                android:id="@+id/btnLogout"
+                android:text="Logout"
+                android:textSize="16sp"
+                android:textColor="@color/blue"
+                android:background="@drawable/ic_logout"
+                android:fontFamily="@font/montserrat_bold"
+                android:layout_marginHorizontal="28dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+
+
 
     </LinearLayout>
 

@@ -119,29 +119,6 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/pilihGempa"
-                android:layout_weight="4"
-                android:layout_marginBottom="28dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_weight="3.5"
-                    android:scaleType="fitStart"
-                    android:src="@drawable/ic_gempa"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"/>
-                <TextView
-                    android:layout_weight="1.5"
-                    android:text="Gempa"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center_vertical"
-                    android:textStyle="bold"
-                    android:textColor="@color/lightblack5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/pilihTsunami"
                 android:layout_weight="4"
                 android:layout_marginBottom="28dp"

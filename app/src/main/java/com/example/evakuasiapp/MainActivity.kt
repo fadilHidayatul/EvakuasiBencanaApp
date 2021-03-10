@@ -4,9 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.os.Handler
 import android.os.PersistableBundle
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -29,6 +31,9 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var context : Context
 
+    private var doubleback = false
+    private lateinit var toast : Toast
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -50,12 +55,6 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
         changeFragment(UserLocationFragment(), UserLocationFragment::class.java.simpleName)
         binding.navigationView.setNavigationItemSelectedListener(this)
-
-//        binding.login.setOnClickListener {
-//            var intent : Intent = Intent(context, LoginAdminActivity::class.java)
-//            startActivity(intent)
-//            binding.drawer.closeDrawer(GravityCompat.START)
-//        }
 
     }
 
@@ -137,10 +136,22 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         if (binding.drawer.isDrawerOpen(GravityCompat.START)){
             binding.drawer.closeDrawer(GravityCompat.START)
         }else{
-            super.onBackPressed()
+            if (doubleback){
+                toast.cancel()
+                super.onBackPressed()
+                moveTaskToBack(true)
+            }else{
+                toast = Toast.makeText(this, "Tekan lagi untuk keluar",Toast.LENGTH_SHORT)
+                toast.show()
+                doubleback = true
+
+                var handler = Handler()
+                handler.postDelayed({ doubleback = false },2000)
+            }
         }
 
     }
 
 
 }
+

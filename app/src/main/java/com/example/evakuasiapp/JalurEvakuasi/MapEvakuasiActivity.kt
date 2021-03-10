@@ -90,7 +90,7 @@ class MapEvakuasiActivity : AppCompatActivity() {
                 gmaps = googleMaps!!
                 center = LatLng(lat.toDouble(),long.toDouble())
                 centerUser = LatLng(latUser.toDouble(),longUser.toDouble())
-                cameraPosition = CameraPosition.Builder().target(center).zoom(13F).build()
+                cameraPosition = CameraPosition.Builder().target(center).zoom(15F).build()
                 googleMaps.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
                 setPoint(center,"evakuasi")

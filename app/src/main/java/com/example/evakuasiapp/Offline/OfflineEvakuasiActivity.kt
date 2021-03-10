@@ -39,7 +39,7 @@ class OfflineEvakuasiActivity : AppCompatActivity() {
         }else if (kategori == "banjir"){
             list.addAll(OfflineBanjir.listBanjir)
         }else if (kategori == "bandang"){
-            Toast.makeText(context,"bb",Toast.LENGTH_SHORT).show()
+            list.addAll(OfflineBandang.listData)
         }
 
         showRecyclerOffline()

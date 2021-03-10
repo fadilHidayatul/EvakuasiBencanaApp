@@ -105,6 +105,13 @@ class LoginAdminActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        var intent : Intent = Intent(applicationContext, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        finish()
+    }
+
 
 }
 

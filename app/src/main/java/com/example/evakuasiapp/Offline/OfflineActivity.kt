@@ -17,11 +17,11 @@ class OfflineActivity : AppCompatActivity() {
         setContentView(binding.root)
         context = this
 
-        binding.pilihGempa.setOnClickListener(){
-            var intent = Intent(context,OfflineEvakuasiActivity::class.java)
-            intent.putExtra("kategori","gempa")
-            startActivity(intent)
-        }
+//        binding.pilihGempa.setOnClickListener(){
+//            var intent = Intent(context,OfflineEvakuasiActivity::class.java)
+//            intent.putExtra("kategori","gempa")
+//            startActivity(intent)
+//        }
         binding.pilihTsunami.setOnClickListener(){
             var intent = Intent(context,OfflineEvakuasiActivity::class.java)
             intent.putExtra("kategori","tsunami")

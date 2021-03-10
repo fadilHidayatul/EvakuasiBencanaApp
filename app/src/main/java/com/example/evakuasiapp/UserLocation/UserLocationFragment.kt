@@ -168,7 +168,7 @@ class UserLocationFragment : Fragment(), Listener, LocationData.AddressCallBack{
 
 
                 var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.your_loc)
-                var b  = Bitmap.createScaledBitmap(bitmap, 350,150,false)
+                var b  = Bitmap.createScaledBitmap(bitmap, 270,150,false)
 
                 gmaps.clear()
                 markerOptions.position(latLong)

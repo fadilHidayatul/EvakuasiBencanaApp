@@ -28,6 +28,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.IOException
 
 
 /**
@@ -95,7 +96,7 @@ class TsunamiFragment : Fragment() {
                         //deklarasi map position
                         gmaps = googleMaps!!
 //                   center = LatLng(-0.9272162, 100.349247)
-                        cameraPosition = CameraPosition.Builder().target(pos).zoom(13F).build()
+                        cameraPosition = CameraPosition.Builder().target(pos).zoom(14F).build()
                         googleMaps.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
                         for (i in 0 until jsonA.length()) {
@@ -114,7 +115,7 @@ class TsunamiFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(context, "Koneksi Internet", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, t.localizedMessage, Toast.LENGTH_SHORT).show()
             }
 
         })
