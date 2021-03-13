@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="26dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="14dp"
+    android:paddingBottom="18dp"
+    tools:context=".BanjirBandang.DialogBencana">
+
+
+    <TextView
+        android:text="ALAMAT"
+        android:textStyle="bold"
+        android:paddingVertical="5dp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/yellow"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/txtAlamat"
+        android:text="GOR "
+        android:layout_width="match_parent"
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Kecamatan"
+        android:fontFamily="@font/montserrat"
+        android:textSize="16sp"
+        android:textColor="@color/lightblack8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginBottom="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_loc_victim"
+            android:padding="6dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        <TextView
+            android:id="@+id/txtKecamatan"
+            android:text="BTK"
+            android:paddingStart="4dp"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/blue"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <TextView
+        android:text="Radius"
+        android:fontFamily="@font/montserrat"
+        android:textSize="16sp"
+        android:textColor="@color/lightblack8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_radius"
+            android:padding="6dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        <TextView
+            android:id="@+id/txtRadius"
+            android:text="1000 KM"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/blue"
+            android:paddingStart="4dp"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

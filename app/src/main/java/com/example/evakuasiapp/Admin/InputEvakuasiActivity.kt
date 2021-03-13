@@ -28,13 +28,10 @@ class InputEvakuasiActivity : AppCompatActivity() {
 
     var kategori = arrayOf(
         "Pilih Kategori",
-        "Banjir Bandang",
-        "Banjir",
         "Gempa",
-        "Longsor",
         "Tsunami"
     )
-    var no = arrayOf("0", "1", "2", "3", "4", "5")
+    var no = arrayOf("0", "3", "5")
     lateinit var pilihan: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
