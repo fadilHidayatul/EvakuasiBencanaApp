@@ -17,6 +17,8 @@ class PrefManager(context: Context) {
     val TOKEN : String = "TOKEN"
     val LAT : String = "LAT"
     val LONG : String = "LONG"
+    val ALAMAT : String = "ALAMAT"
+    val KECAMATAN : String = "KECAMATAN"
 
     //initialize Shared Preferences
     init {
@@ -57,6 +59,7 @@ class PrefManager(context: Context) {
         return SP!!.getString(TOKEN, "")
     }
 
+    //map user
     fun setLat(key: String?, value: String?){
         editor!!.putString(key, value)
         editor!!.commit()
@@ -73,7 +76,23 @@ class PrefManager(context: Context) {
         return SP!!.getString(LONG, "")
     }
 
+    //bencana
+    fun setAlamatBencana(key: String?, value: String?){
+        editor!!.putString(key,value)
+        editor!!.commit()
+    }
+    fun getAlamatBencana() : String? {
+        return SP!!.getString(ALAMAT,"")
+    }
 
+    fun setKecamatanBencana(key: String?, value: String?){
+        editor!!.putString(key,value)
+        editor!!.commit()
+    }
+
+    fun getKecamatanBencana() : String? {
+        return SP!!.getString(KECAMATAN, "")
+    }
 
 }
 

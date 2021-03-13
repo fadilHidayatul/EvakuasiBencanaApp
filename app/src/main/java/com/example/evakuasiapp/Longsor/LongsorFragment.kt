@@ -10,18 +10,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import com.example.evakuasiapp.BanjirBandang.DialogBencana
 import com.example.evakuasiapp.JalurEvakuasi.JalurEvakuasiActivity
+import com.example.evakuasiapp.MainActivity
 
 import com.example.evakuasiapp.R
+import com.example.evakuasiapp.SharedPreferences.PrefManager
 import com.example.evakuasiapp.UtilsApi.ApiClient
 import com.example.evakuasiapp.databinding.FragmentLongsorBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.tapadoo.alerter.Alerter
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -35,6 +36,7 @@ import retrofit2.Response
  */
 class LongsorFragment : Fragment() {
     private lateinit var binding : FragmentLongsorBinding
+    private lateinit var manager : PrefManager
 
     private lateinit var gmaps : GoogleMap
     private lateinit var cameraPosition: CameraPosition
@@ -53,18 +55,14 @@ class LongsorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLongsorBinding.inflate(inflater,container,false)
+        manager = PrefManager(context!!)
+
         var barInfo : TextView = activity!!.findViewById(R.id.barInformasi)
         barInfo.text = "Titik Rawan Longsor"
 
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.onResume()
         AsyncMapView()
-
-        binding.btnJalurEvakuasiLongsor.setOnClickListener(){
-            var intent = Intent(context, JalurEvakuasiActivity::class.java)
-            intent.putExtra("kategori","4")
-            startActivity(intent)
-        }
 
         return binding.root
     }
@@ -127,6 +125,20 @@ class LongsorFragment : Fragment() {
         markerOptions.position(center)
 
         gmaps.addMarker(markerOptions)
+
+        val fragmentManager : FragmentManager = (context as MainActivity).supportFragmentManager
+        gmaps.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener{
+            override fun onMarkerClick(p0: Marker?): Boolean {
+                manager.setAlamatBencana(manager.ALAMAT, p0!!.title)
+                manager.setKecamatanBencana(manager.KECAMATAN, p0!!.snippet)
+
+                val dialog = DialogBencana()
+                dialog.show(fragmentManager,"Dialog Longsor")
+
+                return true
+            }
+
+        })
     }
 
 

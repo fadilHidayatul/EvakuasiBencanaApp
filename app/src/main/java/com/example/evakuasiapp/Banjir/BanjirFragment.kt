@@ -10,9 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import com.example.evakuasiapp.BanjirBandang.DialogBencana
 import com.example.evakuasiapp.JalurEvakuasi.JalurEvakuasiActivity
+import com.example.evakuasiapp.MainActivity
 
 import com.example.evakuasiapp.R
+import com.example.evakuasiapp.SharedPreferences.PrefManager
 import com.example.evakuasiapp.UtilsApi.ApiClient
 import com.example.evakuasiapp.databinding.FragmentBanjirBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -33,8 +37,8 @@ import retrofit2.Response
  * create an instance of this fragment.
  */
 class BanjirFragment : Fragment() {
-
     private lateinit var binding : FragmentBanjirBinding
+    private lateinit var manager : PrefManager
 
     private var alamat : String = ""
     private var kecamatan : String = ""
@@ -54,6 +58,8 @@ class BanjirFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBanjirBinding.inflate(inflater,container,false)
+        manager = PrefManager(context!!)
+
         var infobar : TextView = activity!!.findViewById(R.id.barInformasi)
         infobar.text = "Titik Rawan Banjir"
 
@@ -61,23 +67,14 @@ class BanjirFragment : Fragment() {
         binding.mapView.onResume()
         AsyncMaps()
 
-        binding.btnJalurEvakuasiBanjir.setOnClickListener(){
-            var intent = Intent(context,JalurEvakuasiActivity::class.java)
-            intent.putExtra("kategori","2")
-            startActivity(intent)
-        }
-
         return binding.root
     }
 
     private fun AsyncMaps() {
         binding.mapView.getMapAsync(object : OnMapReadyCallback{
             override fun onMapReady(googlemaps: GoogleMap?) {
-
                 getPoint(googlemaps)
-
             }
-
         })
     }
 
@@ -131,6 +128,20 @@ class BanjirFragment : Fragment() {
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(b))
 
         gmaps.addMarker(markerOptions)
+
+        val fragmentManager : FragmentManager = (context as MainActivity).supportFragmentManager
+        gmaps.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener{
+            override fun onMarkerClick(p0: Marker?): Boolean {
+                manager.setAlamatBencana(manager.ALAMAT,p0!!.title)
+                manager.setKecamatanBencana(manager.KECAMATAN, p0.snippet)
+
+                var dialog = DialogBencana()
+                dialog.show(fragmentManager,"Dialog Banjir")
+
+                return true
+            }
+
+        })
     }
 
     override fun onStop() {
