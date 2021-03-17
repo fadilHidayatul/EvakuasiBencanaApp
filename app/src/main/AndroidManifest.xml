@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.example.permission.MAPS_RECEIVE" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <permission
@@ -16,16 +15,19 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:hardwareAccelerated="true"
-        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Offline.OfflineActivity"></activity>
+        <activity android:name=".Komentar.SelesaiKomentarActivity"></activity>
+        <activity android:name=".Komentar.KomentarActivity" />
+        <activity android:name=".Informasi.InformasiActivity" />
+        <activity android:name=".Offline.OfflineActivity" />
         <activity android:name=".Offline.OfflineEvakuasiActivity" />
         <activity android:name=".JalurEvakuasi.MapEvakuasiActivity" />
         <activity android:name=".JalurEvakuasi.JalurEvakuasiActivity" />

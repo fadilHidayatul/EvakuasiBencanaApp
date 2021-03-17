@@ -22,7 +22,6 @@
         app:itemIconTint="@color/blue"
         android:background="@drawable/bg_drawer"
         android:scaleType="fitXY"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbars="none"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer">

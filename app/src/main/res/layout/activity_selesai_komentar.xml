@@ -4,44 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin.DoneInputActivity"
     android:weightSum="10"
+    android:orientation="vertical"
     android:background="@color/blue"
-    android:orientation="vertical">
+    tools:context=".Komentar.SelesaiKomentarActivity">
 
     <RelativeLayout
-        android:layout_weight="4"
+        android:layout_weight="4.5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <ImageView
-            android:layout_above="@id/txtDone"
+            android:layout_alignParentBottom="true"
             android:src="@drawable/done"
             android:layout_width="match_parent"
-            android:layout_height="250dp"/>
-        <TextView
-            android:id="@+id/txtDone"
-            android:text="Data Berhasil \n di Input"
-            android:gravity="center"
-            android:fontFamily="@font/montserrat_bold"
-            android:textSize="28sp"
-            android:layout_marginTop="35dp"
-            android:textColor="@color/white"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="290dp"/>
+
     </RelativeLayout>
 
 
     <RelativeLayout
         android:background="@drawable/bg_bottom_input"
-        android:layout_weight="4.5"
+        android:layout_weight="5.5"
+        android:paddingVertical="55dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/txtDone"
+            android:text="Komentar berhasil\ndi kirim"
+            android:gravity="center"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="28sp"
+            android:textColor="@color/blue"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <Button
-            android:id="@+id/btnDone"
+            android:id="@+id/btnSelesai"
             android:text="Selesai"
-            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true"
             android:fontFamily="@font/montserrat_bold"
             android:textColor="@color/white"
             android:background="@drawable/ic_button"
@@ -49,6 +50,5 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
-
 
 </LinearLayout>

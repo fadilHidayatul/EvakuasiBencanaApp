@@ -30,9 +30,13 @@
     </group>
 
     <group android:id="@+id/group_offline">
-        <item android:id="@+id/offline"
-            android:title="Offline"
-            android:icon="@drawable/ic_offline"/>
+        <item android:title="Menu Offline">
+            <menu>
+                <item android:id="@+id/offline"
+                    android:title="Offline"
+                    android:icon="@drawable/ic_offline"/>
+            </menu>
+        </item>
     </group>
 
     <group android:id="@+id/group_admin">
@@ -40,11 +44,41 @@
             <menu>
                 <item android:id="@+id/admin"
                     android:title="Admin"
-                    android:iconTint="@color/lightblack1"
                     android:icon="@drawable/admin"/>
-
             </menu>
         </item>
+    </group>
+
+    <group android:id="@+id/group_informasi">
+        <item android:title="Menu Informasi">
+            <menu>
+                <item android:id="@+id/informasi_gempa"
+                    android:title="Informasi Gempa"
+                    android:icon="@drawable/ic_gempa"/>
+                <item android:id="@+id/informasi_tsunami"
+                    android:title="Informasi Tsunami"
+                    android:icon="@drawable/ic_tsunami"/>
+                <item android:id="@+id/informasi_Cuaca"
+                    android:title="Informasi Cuaca"
+                    android:icon="@drawable/admin"/>
+            </menu>
+        </item>
+    </group>
+
+    <group android:id="@+id/group_komentar">
+        <item android:title="Menu Komentar">
+            <menu>
+                <item android:id="@+id/komentar"
+                    android:title="Beri Komentar"
+                    android:icon="@drawable/ic_comment"/>
+            </menu>
+        </item>
+    </group>
+
+    <group android:id="@+id/group_kontak">
+        <item android:id="@+id/contact"
+            android:title="Kontak"
+            android:icon="@drawable/ic_contact"/>
     </group>
 
 

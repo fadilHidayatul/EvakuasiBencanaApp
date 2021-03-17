@@ -2,11 +2,9 @@ package com.example.evakuasiapp.UtilsApi
 
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterface {
     @FormUrlEncoded
@@ -48,6 +46,19 @@ interface ApiInterface {
     @POST("evakuasi/get_tempat_evakuasi.php")
     fun  getEvakuasiBencana(
         @Field("kategori") kategori: String?
+    ) : Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("komentar/komentar.php")
+    fun isiKomentar(
+        @Field("isi") isi : String?,
+        @Field("tgl") tanggal : String?,
+        @Field("kategori") kategori: String?
+    ) : Call<ResponseBody>
+
+    @GET("komentar/tampil_komentar.php")
+    fun getKomentar(
+        @Query("tanggal") tanggal: String?
     ) : Call<ResponseBody>
 
 }

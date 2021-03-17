@@ -19,6 +19,8 @@ import com.example.evakuasiapp.Admin.LoginAdminActivity
 import com.example.evakuasiapp.Banjir.BanjirFragment
 import com.example.evakuasiapp.BanjirBandang.BanjirBandangFragment
 import com.example.evakuasiapp.Gempa.GempaFragment
+import com.example.evakuasiapp.Informasi.InformasiActivity
+import com.example.evakuasiapp.Komentar.KomentarActivity
 import com.example.evakuasiapp.Longsor.LongsorFragment
 import com.example.evakuasiapp.Offline.OfflineActivity
 import com.example.evakuasiapp.Tsunami.TsunamiFragment
@@ -86,6 +88,24 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             )
             R.id.offline -> startActivity(Intent(this@MainActivity, OfflineActivity::class.java))
             R.id.admin -> startActivity(Intent(this@MainActivity, LoginAdminActivity::class.java))
+
+            R.id.informasi_gempa -> {
+                val intent = Intent(this,InformasiActivity::class.java)
+                intent.putExtra("bencana","gempa")
+                startActivity(intent)
+            }
+            R.id.informasi_tsunami -> {
+                val intent = Intent(this,InformasiActivity::class.java)
+                intent.putExtra("bencana","tsunami")
+                startActivity(intent)
+            }
+            R.id.informasi_Cuaca -> {
+                val intent = Intent(this,InformasiActivity::class.java)
+                intent.putExtra("bencana", "cuaca")
+                startActivity(intent)
+            }
+
+            R.id.komentar -> startActivity(Intent(this,KomentarActivity::class.java))
         }
         binding.drawer.closeDrawer(GravityCompat.START)
         return true
