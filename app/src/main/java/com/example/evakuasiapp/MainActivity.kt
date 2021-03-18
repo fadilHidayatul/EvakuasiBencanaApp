@@ -21,6 +21,7 @@ import com.example.evakuasiapp.BanjirBandang.BanjirBandangFragment
 import com.example.evakuasiapp.Gempa.GempaFragment
 import com.example.evakuasiapp.Informasi.InformasiActivity
 import com.example.evakuasiapp.Komentar.KomentarActivity
+import com.example.evakuasiapp.Kontak.KontakActivity
 import com.example.evakuasiapp.Longsor.LongsorFragment
 import com.example.evakuasiapp.Offline.OfflineActivity
 import com.example.evakuasiapp.Tsunami.TsunamiFragment
@@ -106,6 +107,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             }
 
             R.id.komentar -> startActivity(Intent(this,KomentarActivity::class.java))
+            R.id.contact -> startActivity(Intent(this,KontakActivity::class.java))
         }
         binding.drawer.closeDrawer(GravityCompat.START)
         return true

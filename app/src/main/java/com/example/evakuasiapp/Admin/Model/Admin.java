@@ -1,4 +1,4 @@
-package com.example.evakuasiapp.Admin;
+package com.example.evakuasiapp.Admin.Model;
 
 public class Admin {
 

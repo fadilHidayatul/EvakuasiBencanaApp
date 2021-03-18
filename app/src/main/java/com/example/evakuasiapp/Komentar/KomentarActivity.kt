@@ -28,6 +28,7 @@ class KomentarActivity : AppCompatActivity() {
     private lateinit var context: Context
 
     lateinit var tanggal : String
+    lateinit var jam : String
     var kategori = arrayOf("Pilih Kategori","Banjir Bandang", "Banjir", "Gempa","Longsor","Tsunami")
     var no = arrayOf("0","1","2","3","4","5")
     lateinit var pilKategori : String
@@ -45,6 +46,9 @@ class KomentarActivity : AppCompatActivity() {
 
         var dateFormat = SimpleDateFormat("yyyy-MM-dd")
         tanggal  = dateFormat.format(Date())
+
+        var hourFormat = SimpleDateFormat("HH:mm:ss")
+        jam  = hourFormat.format(Date())
 
         var adapter  = ArrayAdapter(context, android.R.layout.simple_spinner_item,kategori)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -81,6 +85,7 @@ class KomentarActivity : AppCompatActivity() {
         ApiClient.getClient.isiKomentar(
             binding.inputKomentar.text.toString(),
             tanggal,
+            jam,
             pilKategori).
         enqueue(object :Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {

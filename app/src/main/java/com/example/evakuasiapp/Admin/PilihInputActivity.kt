@@ -30,6 +30,12 @@ class PilihInputActivity : AppCompatActivity() {
             val intent : Intent = Intent(applicationContext,InputEvakuasiActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnShowKomentar.setOnClickListener{
+            val intent = Intent(applicationContext,ShowKomentarActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnLogout.setOnClickListener(){
             manager.removeSession()
             finish()

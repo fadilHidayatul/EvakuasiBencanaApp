@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
+import com.example.evakuasiapp.Admin.Model.Admin
 import com.example.evakuasiapp.MainActivity
 import com.example.evakuasiapp.R
 import com.example.evakuasiapp.SharedPreferences.PrefManager

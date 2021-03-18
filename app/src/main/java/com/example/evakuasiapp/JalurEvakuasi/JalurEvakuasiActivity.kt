@@ -76,7 +76,7 @@ class JalurEvakuasiActivity : AppCompatActivity() {
                             val ddata: JalurEvakuasi.DATABean = gson.fromJson(
                                 jsonA.getJSONObject(i).toString(),
                                 JalurEvakuasi.DATABean::class.java
-                            )
+                            ) //to model
                             (dataEvakuasi as ArrayList<JalurEvakuasi.DATABean>).add(ddata)
                         }
 

@@ -60,7 +60,7 @@
                     android:icon="@drawable/ic_tsunami"/>
                 <item android:id="@+id/informasi_Cuaca"
                     android:title="Informasi Cuaca"
-                    android:icon="@drawable/admin"/>
+                    android:icon="@drawable/ic_cuaca"/>
             </menu>
         </item>
     </group>
@@ -78,7 +78,7 @@
     <group android:id="@+id/group_kontak">
         <item android:id="@+id/contact"
             android:title="Kontak"
-            android:icon="@drawable/ic_contact"/>
+            android:icon="@drawable/ic_contact" />
     </group>
 
 

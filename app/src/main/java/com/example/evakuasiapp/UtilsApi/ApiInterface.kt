@@ -53,6 +53,7 @@ interface ApiInterface {
     fun isiKomentar(
         @Field("isi") isi : String?,
         @Field("tgl") tanggal : String?,
+        @Field("jam") jam :String?,
         @Field("kategori") kategori: String?
     ) : Call<ResponseBody>
 

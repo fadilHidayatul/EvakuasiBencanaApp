@@ -24,7 +24,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Komentar.SelesaiKomentarActivity"></activity>
+        <activity android:name=".Kontak.KontakActivity"></activity>
+        <activity android:name=".Admin.ShowKomentarActivity" />
+        <activity android:name=".Komentar.SelesaiKomentarActivity" />
         <activity android:name=".Komentar.KomentarActivity" />
         <activity android:name=".Informasi.InformasiActivity" />
         <activity android:name=".Offline.OfflineActivity" />

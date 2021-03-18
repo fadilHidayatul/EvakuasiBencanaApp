@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginBottom="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/jamKomentar"
+        android:text="jam komentar"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/lightblack5"
+        android:alpha="0.8"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="16dp"
+        android:paddingVertical="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_below="@id/jamKomentar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="12dp"
+            android:id="@+id/gambar"
+            android:src="@drawable/ic_com_gempa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textKomentar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/gambar"
+            android:background="@drawable/ic_set_tgl"
+            android:fontFamily="@font/montserrat"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:text="isi text isi texk\nkasjdkasjdhaksgdiasdkkklkll texk\nkasjdkasjdh\naksgdiasdk"
+            android:textColor="@color/lightblack5"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
