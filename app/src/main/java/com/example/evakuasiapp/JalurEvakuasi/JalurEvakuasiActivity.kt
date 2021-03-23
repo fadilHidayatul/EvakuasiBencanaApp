@@ -3,14 +3,17 @@ package com.example.evakuasiapp.JalurEvakuasi
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.evakuasiapp.JalurEvakuasi.Adapter.JalurEvakuasiAdapter
+import com.example.evakuasiapp.SharedPreferences.PrefManager
 import com.example.evakuasiapp.UtilsApi.ApiClient
 import com.example.evakuasiapp.databinding.ActivityJalurEvakuasiBinding
+import com.google.android.gms.maps.model.LatLng
 import com.google.gson.Gson
+import com.google.maps.android.SphericalUtil
 import dmax.dialog.SpotsDialog
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -55,15 +58,12 @@ class JalurEvakuasiActivity : AppCompatActivity() {
         })
 
         getAllDataEvakuasi()
-
     }
 
     private fun getAllDataEvakuasi() {
-        dialog.show()
         ApiClient.getClient.getEvakuasiBencana(kategori).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
-                    dialog.hide()
                     val jsonO = JSONObject(response.body()!!.string());
                     if (jsonO.getString("status") == "200") {
 
@@ -96,14 +96,12 @@ class JalurEvakuasiActivity : AppCompatActivity() {
                         ).show()
                     }
                 } else {
-                    dialog.hide()
                     Toast.makeText(applicationContext, "REspon tidak berhasil", Toast.LENGTH_SHORT)
                         .show()
                 }
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                dialog.hide()
                 Toast.makeText(applicationContext, "Koneksi Internet", Toast.LENGTH_SHORT).show()
             }
 

@@ -10,7 +10,7 @@ public class JalurEvakuasi {
      * success : 1
      * status : 200
      * message : Data ada
-     * DATA : [{"kategori_bencana":"Gempa","tempat":"Lapangan imam bonjol","alamat":"Bagindo aziz chan","kecamatan":"Padang Selatan","lat":"-0.9524403","long":"100.3608588","daya":"2000"},{"kategori_bencana":"Gempa","tempat":"GOR H. Agus Salim","alamat":"Rimbo kaluang","kecamatan":"Padang Barat","lat":"-0.9293396","long":"100.3558222","daya":"2000"},{"kategori_bencana":"Gempa","tempat":"Lapangan Gubernur","alamat":"Bandar Purus","kecamatan":"Padang Barat","lat":"-0.9356128","long":"100.3558675","daya":"1000"},{"kategori_bencana":"Gempa","tempat":"Lapangan Polda Sumbar","alamat":"Jendral Sudirman","kecamatan":"Padang Barat","lat":"-0.9360865","long":"100.3587197","daya":"1000"},{"kategori_bencana":"Gempa","tempat":"Lapangan UNP","alamat":"Air Tawar","kecamatan":"Padang Utara","lat":"-0.897397","long":"100.3485548","daya":"2000"}]
+     * DATA : [{"id":"12","kategori_bencana":"Tsunami","tempat":"Bappeda Prov. Sumbar","alamat":"Jl. Khatib Sulaiman","kecamatan":"Padang Barat","lat":"-0.9257988","long":"100.3588886","daya":"2000","jarak":"4516.512133421126"},{"id":"13","kategori_bencana":"Tsunami","tempat":"Bukit di Air Manis","alamat":"Air Manis","kecamatan":"Padang Selatan","lat":"-0.9897317","long":"100.3638474","daya":"3000","jarak":"4991.960531470164"},{"id":"9","kategori_bencana":"Tsunami","tempat":"AMIK Indonesia","alamat":"Jl.Khatib Sulaiman","kecamatan":"Padang Utara","lat":"-0.9137146","long":"100.3559253","daya":"2000","jarak":"5708.857652264278"},{"id":"16","kategori_bencana":"Tsunami","tempat":"Bukit di Lantamal II","alamat":"Lantamal II Teluk Bayur","kecamatan":"Padang Selatan","lat":"-1.0036799","long":"100.3645023","daya":"2000","jarak":"6299.011135644493"}]
      */
 
     private int success;
@@ -52,15 +52,18 @@ public class JalurEvakuasi {
 
     public static class DATABean {
         /**
-         * kategori_bencana : Gempa
-         * tempat : Lapangan imam bonjol
-         * alamat : Bagindo aziz chan
-         * kecamatan : Padang Selatan
-         * lat : -0.9524403
-         * long : 100.3608588
+         * id : 12
+         * kategori_bencana : Tsunami
+         * tempat : Bappeda Prov. Sumbar
+         * alamat : Jl. Khatib Sulaiman
+         * kecamatan : Padang Barat
+         * lat : -0.9257988
+         * long : 100.3588886
          * daya : 2000
+         * jarak : 4516.512133421126
          */
 
+        private String id;
         private String kategori_bencana;
         private String tempat;
         private String alamat;
@@ -69,6 +72,15 @@ public class JalurEvakuasi {
         @SerializedName("long")
         private String longX;
         private String daya;
+        private String jarak;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
 
         public String getKategori_bencana() {
             return kategori_bencana;
@@ -124,6 +136,14 @@ public class JalurEvakuasi {
 
         public void setDaya(String daya) {
             this.daya = daya;
+        }
+
+        public String getJarak() {
+            return jarak;
+        }
+
+        public void setJarak(String jarak) {
+            this.jarak = jarak;
         }
     }
 }

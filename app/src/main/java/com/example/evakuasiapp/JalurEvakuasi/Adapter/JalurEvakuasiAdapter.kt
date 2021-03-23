@@ -39,7 +39,10 @@ class JalurEvakuasiAdapter(var context: Context, var list: List<JalurEvakuasi.DA
     }
 
     override fun onBindViewHolder(holder: JalurEvakuasiAdapter.viewHolder, position: Int) {
+        var j = listFilter[position].jarak.toDouble()
+
         holder.binding.placeName.text = listFilter[position].tempat
+        holder.binding.distance.text =  String.format("%.2f",j/1000) + " km"
         holder.binding.rowPlace.setOnClickListener(){
             var intent = Intent(context,MapEvakuasiActivity::class.java)
             intent.putExtra("tempat", listFilter[position].tempat)
@@ -90,3 +93,4 @@ class JalurEvakuasiAdapter(var context: Context, var list: List<JalurEvakuasi.DA
     }
 
 }
+

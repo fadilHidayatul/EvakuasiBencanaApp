@@ -116,7 +116,7 @@
         <RelativeLayout
             android:layout_marginBottom="100dp"
             android:id="@+id/layoutNoData"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView

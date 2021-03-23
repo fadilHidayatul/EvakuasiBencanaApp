@@ -49,6 +49,13 @@ interface ApiInterface {
     ) : Call<ResponseBody>
 
     @FormUrlEncoded
+    @POST("evakuasi/update_jarak.php")
+    fun updateJarak(
+        @Field("jarak") jarak : String?,
+        @Field("id_tempat") id : String?
+    ) : Call<ResponseBody>
+
+    @FormUrlEncoded
     @POST("komentar/komentar.php")
     fun isiKomentar(
         @Field("isi") isi : String?,
